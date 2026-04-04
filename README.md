@@ -57,7 +57,7 @@ Frontend disponibil la `http://localhost:3000`
 ```bash
 docker compose up --build
 ```
-Aplicatia va fi disponibila la `http://localhost:3000`
+Aplicatia va fi disponibila la `[docker compose up --build](https://yoga-studio-production-86fa.up.railway.app/api/classes)`
 
 ## API Endpoints
 
