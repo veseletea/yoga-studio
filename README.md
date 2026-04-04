@@ -2,11 +2,12 @@
 
 Aplicatie full-stack pentru managementul unui studio de yoga: instructori, studenti, clase si rezervari.
 
-## Tech Stack
+### Tech Stack (Backend - în dezvoltare)
 
-- **Backend:** Spring Boot 3.4, Java 21, Spring Data JPA, H2 (in-memory)
-- **Frontend:** React 19, Vite, React Router
-- **Deploy:** Docker, Docker Compose, nginx
+- **Backend**: Spring Boot 3.4, Java 17, Spring Data JPA, H2 (în memorie)
+- **Frontend**: React 19 + Vite (în plan / în dezvoltare)
+- **Tools**: Maven, Git, Docker (în curs de configurare)
+- **Scop proiect**: Demonstrare competențe Java/Spring Boot 
 
 ## Structura Proiectului
 
