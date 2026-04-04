@@ -120,3 +120,11 @@ Disponibila la `http://localhost:8080/h2-console`
 - Validare input cu mesaje in romana
 - Error handling centralizat (RFC 7807 Problem Detail)
 - Date initiale pre-populate (4 instructori, 6 studenti, 9 clase, 13 rezervari)
+
+### Progres curent (aprilie 2026)
+- [x] Proiect Spring Boot creat cu Maven
+- [x] Structură de pachete inițială
+- [ ] Entități JPA (Student, Instructor, YogaClass, Booking)
+- [ ] REST Controllers
+- [ ] Bază de date + servicii
+- [ ] Deploy pe Railway / Render
