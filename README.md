@@ -1,25 +1,42 @@
-# Yoga Studio Management
+Yoga Studio Management
+Full-stack application for managing a yoga studio: instructors, students, classes, and bookings.
+🔗 Live demo: yoga-studio-production-86fa.up.railway.app
 
-Aplicatie full-stack pentru managementul unui studio de yoga: instructori, studenti, clase si rezervari.
+Tech Stack
 
-### Tech Stack (Backend - în dezvoltare)
+Backend
+Spring Boot 3.4
+Java 17
+Spring Data JPA
+H2 (in-memory database)
+Maven
 
-- **Backend**: Spring Boot 3.4, Java 17, Spring Data JPA, H2 (în memorie)
-- **Frontend**: React 19 + Vite (în plan / în dezvoltare)
-- **Tools**: Maven, Git, Docker (în curs de configurare)
-- **Scop proiect**: Demonstrare competențe Java/Spring Boot 
+Frontend
+React 19
+Vite
+Plain CSS
 
-## Structura Proiectului
+Infrastructure
+Docker & Docker Compose
+Railway (deployment)
 
-```
+Features
+Full CRUD for instructors, students, and classes
+Booking system with capacity validation
+Automatic waitlist when a class is full
+Input validation with localized error messages
+Centralized error handling using RFC 7807 Problem Detail
+Pre-populated seed data (4 instructors, 6 students, 9 classes, 13 bookings)
+
+Project Structure
 yoga-studio/
 ├── src/                        # Spring Boot backend
 │   └── main/java/com/yogastudio/
 │       ├── entity/             # Student, Instructor, YogaClass, Booking
 │       ├── dto/                # Java records (request/response)
-│       ├── repository/         # Spring Data JPA
+│       ├── repository/         # Spring Data JPA repositories
 │       ├── service/            # Business logic
-│       ├── controller/         # REST API
+│       ├── controller/         # REST API endpoints
 │       └── exception/          # Global error handling
 ├── frontend/                   # React frontend
 │   └── src/
@@ -28,103 +45,155 @@ yoga-studio/
 │       └── api.js              # API client
 ├── Dockerfile                  # Backend container
 ├── frontend/Dockerfile         # Frontend container (nginx)
-└── docker-compose.yml          # Orchestrare
-```
+└── docker-compose.yml          # Service orchestration
 
-## Rulare Locala
 
-### Cerinte
-- Java 21
-- Maven 3.9+
-- Node.js 20+
-
-### Backend
-```bash
+Getting Started
+Prerequisites
+Java 21
+Maven 3.9+
+Node.js 20+
+Run the backend
 mvn spring-boot:run
-```
-Backend disponibil la `http://localhost:8080`
 
-### Frontend
-```bash
+Backend runs at http://localhost:8080
+Run the frontend
 cd frontend
 npm install
 npm run dev
-```
-Frontend disponibil la `http://localhost:3000`
 
-## Rulare cu Docker
-
-```bash
+Frontend runs at http://localhost:3000
+Run with Docker
 docker compose up --build
-```
-Aplicatia va fi disponibila la `[docker compose up --build](https://yoga-studio-production-86fa.up.railway.app/api/classes)`
 
-## API Endpoints
+The full stack will be available locally on the configured ports.
 
-| Metoda | Endpoint | Descriere |
-|--------|----------|-----------|
-| GET | `/api/students` | Lista studenti |
-| POST | `/api/students` | Adauga student |
-| PUT | `/api/students/{id}` | Actualizeaza student |
-| DELETE | `/api/students/{id}` | Sterge student |
-| GET | `/api/instructors` | Lista instructori |
-| POST | `/api/instructors` | Adauga instructor |
-| PUT | `/api/instructors/{id}` | Actualizeaza instructor |
-| DELETE | `/api/instructors/{id}` | Sterge instructor |
-| GET | `/api/classes` | Lista clase |
-| GET | `/api/classes/day/{DAY}` | Clase pe zi (ex: MONDAY) |
-| POST | `/api/classes` | Adauga clasa |
-| PUT | `/api/classes/{id}` | Actualizeaza clasa |
-| DELETE | `/api/classes/{id}` | Sterge clasa |
-| GET | `/api/bookings` | Lista rezervari |
-| GET | `/api/bookings/student/{id}` | Rezervari per student |
-| GET | `/api/bookings/class/{id}` | Rezervari per clasa |
-| POST | `/api/bookings` | Creaza rezervare |
-| PATCH | `/api/bookings/{id}/cancel` | Anuleaza rezervare |
+API Endpoints
+Students
+Method
+Endpoint
+Description
+GET
+/api/students
+List all students
+POST
+/api/students
+Create a student
+PUT
+/api/students/{id}
+Update a student
+DELETE
+/api/students/{id}
+Delete a student
 
-## Exemple API
+Instructors
+Method
+Endpoint
+Description
+GET
+/api/instructors
+List all instructors
+POST
+/api/instructors
+Create an instructor
+PUT
+/api/instructors/{id}
+Update an instructor
+DELETE
+/api/instructors/{id}
+Delete an instructor
 
-### Adauga instructor
-```bash
+Classes
+Method
+Endpoint
+Description
+GET
+/api/classes
+List all classes
+GET
+/api/classes/day/{DAY}
+Filter classes by day (e.g. MONDAY)
+POST
+/api/classes
+Create a class
+PUT
+/api/classes/{id}
+Update a class
+DELETE
+/api/classes/{id}
+Delete a class
+
+Bookings
+Method
+Endpoint
+Description
+GET
+/api/bookings
+List all bookings
+GET
+/api/bookings/student/{id}
+Bookings for a specific student
+GET
+/api/bookings/class/{id}
+Bookings for a specific class
+POST
+/api/bookings
+Create a booking
+PATCH
+/api/bookings/{id}/cancel
+Cancel a booking
+
+
+API Examples
+Create an instructor
 curl -X POST http://localhost:8080/api/instructors \
   -H "Content-Type: application/json" \
-  -d '{"firstName":"Ana","lastName":"Popescu","email":"ana@yoga.ro","specialization":"Hatha Yoga"}'
-```
+  -d '{
+    "firstName": "Ana",
+    "lastName": "Popescu",
+    "email": "ana@yoga.ro",
+    "specialization": "Hatha Yoga"
+  }'
 
-### Creaza o clasa
-```bash
+Create a class
 curl -X POST http://localhost:8080/api/classes \
   -H "Content-Type: application/json" \
-  -d '{"name":"Hatha Dimineata","dayOfWeek":"MONDAY","startTime":"10:00","durationMinutes":60,"maxCapacity":12,"instructorId":1}'
-```
+  -d '{
+    "name": "Morning Hatha",
+    "dayOfWeek": "MONDAY",
+    "startTime": "10:00",
+    "durationMinutes": 60,
+    "maxCapacity": 12,
+    "instructorId": 1
+  }'
 
-### Rezerva un student la o clasa
-```bash
+Book a student into a class
 curl -X POST http://localhost:8080/api/bookings \
   -H "Content-Type: application/json" \
-  -d '{"studentId":1,"yogaClassId":1}'
-```
+  -d '{
+    "studentId": 1,
+    "yogaClassId": 1
+  }'
 
-## H2 Console
 
-Disponibila la `http://localhost:8080/h2-console`
-- JDBC URL: `jdbc:h2:mem:yogastudio`
-- User: `sa`
-- Parola: *(gol)*
+H2 Console (local development)
+Available at http://localhost:8080/h2-console
+JDBC URL: jdbc:h2:mem:yogastudio
+User: sa
+Password: (empty)
 
-## Functionalitati
+Roadmap
+[ ] User authentication & authorization (Spring Security + JWT)
+[ ] Migrate from H2 to PostgreSQL in production
+[ ] OpenAPI / Swagger documentation
+[ ] Unit and integration tests (JUnit 5 + Testcontainers)
+[ ] CI/CD pipeline with GitHub Actions
+[ ] Email notifications for bookings
+[ ] Admin dashboard with analytics
 
-- CRUD complet pentru instructori, studenti si clase
-- Sistem de rezervari cu verificare capacitate
-- Waitlist automat cand clasa e plina
-- Validare input cu mesaje in romana
-- Error handling centralizat (RFC 7807 Problem Detail)
-- Date initiale pre-populate (4 instructori, 6 studenti, 9 clase, 13 rezervari)
+License
+This project is built for educational and portfolio purposes.
 
-### Progres curent (aprilie 2026)
-- [x] Proiect Spring Boot creat cu Maven
-- [x] Structură de pachete inițială
-- [ ] Entități JPA (Student, Instructor, YogaClass, Booking)
-- [ ] REST Controllers
-- [ ] Bază de date + servicii
-- [ ] Deploy pe Railway / Render
+Author
+Iuliana Paun — built to demonstrate Java / Spring Boot and full-stack development skills.
+
