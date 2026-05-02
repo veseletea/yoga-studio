@@ -3,9 +3,9 @@ package com.yogastudio.dto;
 import jakarta.validation.constraints.NotNull;
 
 public record BookingRequest(
-        @NotNull(message = "ID-ul studentului este obligatoriu")
+        @NotNull(message = "Student ID is required")
         Long studentId,
 
-        @NotNull(message = "ID-ul clasei este obligatoriu")
+        @NotNull(message = "Class ID is required")
         Long yogaClassId
 ) {}

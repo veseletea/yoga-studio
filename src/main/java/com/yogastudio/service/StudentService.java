@@ -31,19 +31,19 @@ public class StudentService {
     public StudentResponse findById(Long id) {
         return studentRepository.findById(id)
                 .map(StudentResponse::from)
-                .orElseThrow(() -> new ResourceNotFoundException("Student cu id " + id + " nu a fost găsit"));
+                .orElseThrow(() -> new ResourceNotFoundException("Student with id " + id + " not found"));
     }
 
     public StudentResponse findByEmail(String email) {
         return studentRepository.findByEmail(email)
                 .map(StudentResponse::from)
-                .orElseThrow(() -> new ResourceNotFoundException("Student cu email " + email + " nu a fost găsit"));
+                .orElseThrow(() -> new ResourceNotFoundException("Student with email " + email + " not found"));
     }
 
     @Transactional
     public StudentResponse create(StudentRequest request) {
         if (studentRepository.existsByEmail(request.email())) {
-            throw new DuplicateResourceException("Email-ul " + request.email() + " este deja folosit");
+            throw new DuplicateResourceException("Email " + request.email() + " is already in use");
         }
 
         var student = new Student(
@@ -60,7 +60,7 @@ public class StudentService {
     @Transactional
     public StudentResponse update(Long id, StudentRequest request) {
         Student student = studentRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Student cu id " + id + " nu a fost găsit"));
+                .orElseThrow(() -> new ResourceNotFoundException("Student with id " + id + " not found"));
 
         student.setFirstName(request.firstName());
         student.setLastName(request.lastName());
@@ -73,7 +73,7 @@ public class StudentService {
     @Transactional
     public void delete(Long id) {
         if (!studentRepository.existsById(id)) {
-            throw new ResourceNotFoundException("Student cu id " + id + " nu a fost găsit");
+            throw new ResourceNotFoundException("Student with id " + id + " not found");
         }
         studentRepository.deleteById(id);
     }

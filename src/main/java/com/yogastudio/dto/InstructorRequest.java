@@ -4,14 +4,14 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 
 public record InstructorRequest(
-        @NotBlank(message = "Prenumele este obligatoriu")
+        @NotBlank(message = "First name is required")
         String firstName,
 
-        @NotBlank(message = "Numele este obligatoriu")
+        @NotBlank(message = "Last name is required")
         String lastName,
 
-        @NotBlank(message = "Email-ul este obligatoriu")
-        @Email(message = "Email invalid")
+        @NotBlank(message = "Email is required")
+        @Email(message = "Invalid email")
         String email,
 
         String phone,

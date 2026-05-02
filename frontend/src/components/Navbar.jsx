@@ -5,12 +5,12 @@ export default function Navbar() {
     <nav className="navbar">
       <div className="navbar-brand">Yoga Studio</div>
       <div className="navbar-links">
-        <NavLink to="/">Acasă</NavLink>
-        <NavLink to="/schedule">Program</NavLink>
-        <NavLink to="/instructors">Instructori</NavLink>
-        <NavLink to="/students">Studenți</NavLink>
-        <NavLink to="/classes">Clase</NavLink>
-        <NavLink to="/bookings">Rezervări</NavLink>
+        <NavLink to="/">Home</NavLink>
+        <NavLink to="/schedule">Schedule</NavLink>
+        <NavLink to="/instructors">Instructors</NavLink>
+        <NavLink to="/students">Students</NavLink>
+        <NavLink to="/classes">Classes</NavLink>
+        <NavLink to="/bookings">Bookings</NavLink>
       </div>
     </nav>
   );

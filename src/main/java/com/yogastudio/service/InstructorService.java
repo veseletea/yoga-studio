@@ -30,13 +30,13 @@ public class InstructorService {
     public InstructorResponse findById(Long id) {
         return instructorRepository.findById(id)
                 .map(InstructorResponse::from)
-                .orElseThrow(() -> new ResourceNotFoundException("Instructor cu id " + id + " nu a fost găsit"));
+                .orElseThrow(() -> new ResourceNotFoundException("Instructor with id " + id + " not found"));
     }
 
     @Transactional
     public InstructorResponse create(InstructorRequest request) {
         if (instructorRepository.existsByEmail(request.email())) {
-            throw new DuplicateResourceException("Email-ul " + request.email() + " este deja folosit");
+            throw new DuplicateResourceException("Email " + request.email() + " is already in use");
         }
 
         var instructor = new Instructor(
@@ -53,7 +53,7 @@ public class InstructorService {
     @Transactional
     public InstructorResponse update(Long id, InstructorRequest request) {
         Instructor instructor = instructorRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Instructor cu id " + id + " nu a fost găsit"));
+                .orElseThrow(() -> new ResourceNotFoundException("Instructor with id " + id + " not found"));
 
         instructor.setFirstName(request.firstName());
         instructor.setLastName(request.lastName());
@@ -67,7 +67,7 @@ public class InstructorService {
     @Transactional
     public void delete(Long id) {
         if (!instructorRepository.existsById(id)) {
-            throw new ResourceNotFoundException("Instructor cu id " + id + " nu a fost găsit");
+            throw new ResourceNotFoundException("Instructor with id " + id + " not found");
         }
         instructorRepository.deleteById(id);
     }
