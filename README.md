@@ -2,7 +2,7 @@
 
 Full-stack application for managing a yoga studio: instructors, students, classes, and bookings.
 
-**Live Demo:** [yoga-studio-production-86fa.up.railway.app](https://yoga-studio-production-86fa.up.railway.app)
+**Live Demo:** [[yoga-studio-production-86fa.up.railway.app](https://yogastudio.up.railway.app)]([https://yoga-studio-production-86fa.up.railway.app](https://yogastudio.up.railway.app))
 
 ## Tech Stack
 
