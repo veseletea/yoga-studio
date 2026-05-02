@@ -34,6 +34,12 @@ public class StudentService {
                 .orElseThrow(() -> new ResourceNotFoundException("Student cu id " + id + " nu a fost găsit"));
     }
 
+    public StudentResponse findByEmail(String email) {
+        return studentRepository.findByEmail(email)
+                .map(StudentResponse::from)
+                .orElseThrow(() -> new ResourceNotFoundException("Student cu email " + email + " nu a fost găsit"));
+    }
+
     @Transactional
     public StudentResponse create(StudentRequest request) {
         if (studentRepository.existsByEmail(request.email())) {

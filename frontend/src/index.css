@@ -231,3 +231,208 @@ tr:hover td {
   color: #999;
   padding: 2rem;
 }
+
+/* Schedule Page */
+
+.schedule-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.schedule-header p {
+  color: #666;
+  font-size: 1.05rem;
+  margin-top: 0.3rem;
+}
+
+.schedule-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.schedule-day h3.day-title {
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #2d5016;
+  border-bottom: 2px solid #2d5016;
+  padding-bottom: 0.4rem;
+  margin-bottom: 0.8rem;
+}
+
+.class-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: white;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  padding: 1rem 1.2rem;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  transition: all 0.2s;
+}
+
+.class-card:hover {
+  border-color: #2d5016;
+  box-shadow: 0 2px 8px rgba(45, 80, 22, 0.15);
+}
+
+.class-card-selected {
+  border-color: #2d5016;
+  background: #f0f7ec;
+}
+
+.class-card-time {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #2d5016;
+  min-width: 50px;
+}
+
+.class-card-info {
+  flex: 1;
+}
+
+.class-card-name {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.class-card-instructor {
+  font-size: 0.85rem;
+  color: #888;
+  margin-top: 0.1rem;
+}
+
+.class-card-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.2rem;
+  font-size: 0.82rem;
+}
+
+.class-card-duration {
+  color: #888;
+}
+
+.class-card-spots {
+  font-weight: 600;
+  color: #2d5016;
+}
+
+.class-card-spots.spots-low {
+  color: #e67e22;
+}
+
+/* Modal */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: 1rem;
+}
+
+.modal {
+  background: white;
+  border-radius: 14px;
+  padding: 2rem;
+  max-width: 500px;
+  width: 100%;
+  position: relative;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal-close {
+  position: absolute;
+  top: 0.8rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.6rem;
+  color: #999;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.modal-close:hover {
+  color: #333;
+}
+
+.modal-header h2 {
+  color: #2d5016;
+  margin-bottom: 0.2rem;
+}
+
+.modal-subtitle {
+  color: #888;
+  font-size: 0.95rem;
+  margin-bottom: 1.2rem;
+}
+
+.modal-details {
+  background: #f9f9f9;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.4rem 0;
+  font-size: 0.92rem;
+}
+
+.detail-row + .detail-row {
+  border-top: 1px solid #eee;
+}
+
+.detail-label {
+  font-weight: 600;
+  color: #555;
+}
+
+.booking-form h3 {
+  font-size: 1rem;
+  color: #2d5016;
+  margin-bottom: 0.8rem;
+}
+
+.btn-book {
+  width: 100%;
+  padding: 0.8rem;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+}
+
+.btn-book:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.schedule-message {
+  padding: 0.8rem 1rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  font-size: 0.92rem;
+}
+
+.schedule-message.success {
+  background: #d4edda;
+  color: #155724;
+}
+
+.schedule-message.error {
+  background: #fce4e4;
+  color: #c0392b;
+}
