@@ -6,8 +6,15 @@ async function request(url, options = {}) {
     ...options,
   });
   if (!res.ok) {
-    const error = await res.json().catch(() => ({ detail: 'Unknown error' }));
-    throw new Error(error.detail || `HTTP ${res.status}`);
+    const text = await res.text().catch(() => '');
+    let message = `HTTP ${res.status}`;
+    try {
+      const error = JSON.parse(text);
+      message = error.detail || error.message || error.error || message;
+    } catch {
+      if (text) message = text;
+    }
+    throw new Error(message);
   }
   if (res.status === 204) return null;
   return res.json();
