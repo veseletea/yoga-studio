@@ -5,6 +5,7 @@ import InstructorsPage from './pages/InstructorsPage'
 import StudentsPage from './pages/StudentsPage'
 import ClassesPage from './pages/ClassesPage'
 import BookingsPage from './pages/BookingsPage'
+import SchedulePage from './pages/SchedulePage'
 
 export default function App() {
   return (
@@ -12,6 +13,7 @@ export default function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/schedule" element={<SchedulePage />} />
         <Route path="/instructors" element={<InstructorsPage />} />
         <Route path="/students" element={<StudentsPage />} />
         <Route path="/classes" element={<ClassesPage />} />

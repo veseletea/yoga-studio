@@ -6,6 +6,7 @@ export default function Navbar() {
       <div className="navbar-brand">Yoga Studio</div>
       <div className="navbar-links">
         <NavLink to="/">Acasă</NavLink>
+        <NavLink to="/schedule">Program</NavLink>
         <NavLink to="/instructors">Instructori</NavLink>
         <NavLink to="/students">Studenți</NavLink>
         <NavLink to="/classes">Clase</NavLink>

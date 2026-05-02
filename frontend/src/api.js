@@ -15,6 +15,7 @@ async function request(url, options = {}) {
 
 export const studentApi = {
   getAll: () => request(`${API}/students`),
+  findByEmail: (email) => request(`${API}/students/search?email=${encodeURIComponent(email)}`),
   create: (data) => request(`${API}/students`, { method: 'POST', body: JSON.stringify(data) }),
   update: (id, data) => request(`${API}/students/${id}`, { method: 'PUT', body: JSON.stringify(data) }),
   delete: (id) => request(`${API}/students/${id}`, { method: 'DELETE' }),

@@ -29,6 +29,11 @@ public class StudentController {
         return studentService.findById(id);
     }
 
+    @GetMapping("/search")
+    public StudentResponse findByEmail(@RequestParam String email) {
+        return studentService.findByEmail(email);
+    }
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public StudentResponse create(@Valid @RequestBody StudentRequest request) {
