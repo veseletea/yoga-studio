@@ -44,14 +44,14 @@ export default function BookingsPage() {
   }
 
   const statusLabel = (status) => {
-    if (status === 'CONFIRMED') return 'Confirmat'
-    if (status === 'CANCELLED') return 'Anulat'
-    return 'Lista de așteptare'
+    if (status === 'CONFIRMED') return 'Confirmed'
+    if (status === 'CANCELLED') return 'Cancelled'
+    return 'Waitlisted'
   }
 
   return (
     <div className="page">
-      <h1>Rezervări</h1>
+      <h1>Bookings</h1>
 
       {error && <div className="error">{error}</div>}
 
@@ -61,38 +61,38 @@ export default function BookingsPage() {
             <div className="form-group">
               <label>Student</label>
               <select value={form.studentId} onChange={e => setForm({ ...form, studentId: e.target.value })} required>
-                <option value="">-- Alege student --</option>
+                <option value="">-- Select student --</option>
                 {students.map(s => (
                   <option key={s.id} value={s.id}>{s.firstName} {s.lastName}</option>
                 ))}
               </select>
             </div>
             <div className="form-group">
-              <label>Clasă</label>
+              <label>Class</label>
               <select value={form.yogaClassId} onChange={e => setForm({ ...form, yogaClassId: e.target.value })} required>
-                <option value="">-- Alege clasă --</option>
+                <option value="">-- Select class --</option>
                 {classes.map(c => (
                   <option key={c.id} value={c.id}>{c.name} ({c.currentBookings}/{c.maxCapacity})</option>
                 ))}
               </select>
             </div>
           </div>
-          <button type="submit" className="btn btn-primary">Rezervă</button>
+          <button type="submit" className="btn btn-primary">Book</button>
         </form>
       </div>
 
       <div className="card">
         {items.length === 0 ? (
-          <div className="empty">Nicio rezervare</div>
+          <div className="empty">No bookings yet</div>
         ) : (
           <table>
             <thead>
               <tr>
                 <th>Student</th>
-                <th>Clasă</th>
-                <th>Data rezervării</th>
+                <th>Class</th>
+                <th>Booked At</th>
                 <th>Status</th>
-                <th>Acțiuni</th>
+                <th>Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -100,11 +100,11 @@ export default function BookingsPage() {
                 <tr key={item.id}>
                   <td>{item.studentName}</td>
                   <td>{item.className}</td>
-                  <td>{new Date(item.bookedAt).toLocaleString('ro-RO')}</td>
+                  <td>{new Date(item.bookedAt).toLocaleString('en-US')}</td>
                   <td><span className={badgeClass(item.status)}>{statusLabel(item.status)}</span></td>
                   <td>
                     {item.status === 'CONFIRMED' && (
-                      <button className="btn btn-danger btn-sm" onClick={() => handleCancel(item.id)}>Anulează</button>
+                      <button className="btn btn-danger btn-sm" onClick={() => handleCancel(item.id)}>Cancel</button>
                     )}
                   </td>
                 </tr>

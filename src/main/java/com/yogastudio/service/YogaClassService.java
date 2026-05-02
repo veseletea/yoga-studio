@@ -34,7 +34,7 @@ public class YogaClassService {
     public YogaClassResponse findById(Long id) {
         return yogaClassRepository.findById(id)
                 .map(YogaClassResponse::from)
-                .orElseThrow(() -> new ResourceNotFoundException("Clasa cu id " + id + " nu a fost găsită"));
+                .orElseThrow(() -> new ResourceNotFoundException("Class with id " + id + " not found"));
     }
 
     public List<YogaClassResponse> findByDay(DayOfWeek day) {
@@ -47,7 +47,7 @@ public class YogaClassService {
     public YogaClassResponse create(YogaClassRequest request) {
         Instructor instructor = instructorRepository.findById(request.instructorId())
                 .orElseThrow(() -> new ResourceNotFoundException(
-                        "Instructor cu id " + request.instructorId() + " nu a fost găsit"));
+                        "Instructor with id " + request.instructorId() + " not found"));
 
         var yogaClass = new YogaClass();
         yogaClass.setName(request.name());
@@ -64,11 +64,11 @@ public class YogaClassService {
     @Transactional
     public YogaClassResponse update(Long id, YogaClassRequest request) {
         YogaClass yogaClass = yogaClassRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Clasa cu id " + id + " nu a fost găsită"));
+                .orElseThrow(() -> new ResourceNotFoundException("Class with id " + id + " not found"));
 
         Instructor instructor = instructorRepository.findById(request.instructorId())
                 .orElseThrow(() -> new ResourceNotFoundException(
-                        "Instructor cu id " + request.instructorId() + " nu a fost găsit"));
+                        "Instructor with id " + request.instructorId() + " not found"));
 
         yogaClass.setName(request.name());
         yogaClass.setDescription(request.description());
@@ -84,7 +84,7 @@ public class YogaClassService {
     @Transactional
     public void delete(Long id) {
         if (!yogaClassRepository.existsById(id)) {
-            throw new ResourceNotFoundException("Clasa cu id " + id + " nu a fost găsită");
+            throw new ResourceNotFoundException("Class with id " + id + " not found");
         }
         yogaClassRepository.deleteById(id);
     }

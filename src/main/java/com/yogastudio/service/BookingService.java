@@ -54,14 +54,14 @@ public class BookingService {
     public BookingResponse create(BookingRequest request) {
         Student student = studentRepository.findById(request.studentId())
                 .orElseThrow(() -> new ResourceNotFoundException(
-                        "Student cu id " + request.studentId() + " nu a fost găsit"));
+                        "Student with id " + request.studentId() + " not found"));
 
         YogaClass yogaClass = yogaClassRepository.findById(request.yogaClassId())
                 .orElseThrow(() -> new ResourceNotFoundException(
-                        "Clasa cu id " + request.yogaClassId() + " nu a fost găsită"));
+                        "Class with id " + request.yogaClassId() + " not found"));
 
         if (bookingRepository.existsByStudentIdAndYogaClassId(request.studentId(), request.yogaClassId())) {
-            throw new DuplicateResourceException("Studentul este deja înscris la această clasă");
+            throw new DuplicateResourceException("Student is already enrolled in this class");
         }
 
         long currentBookings = bookingRepository.findByYogaClassId(request.yogaClassId()).stream()
@@ -84,7 +84,7 @@ public class BookingService {
     @Transactional
     public BookingResponse cancel(Long id) {
         Booking booking = bookingRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Rezervare cu id " + id + " nu a fost găsită"));
+                .orElseThrow(() -> new ResourceNotFoundException("Booking with id " + id + " not found"));
 
         booking.setStatus(Booking.BookingStatus.CANCELLED);
         return BookingResponse.from(bookingRepository.save(booking));

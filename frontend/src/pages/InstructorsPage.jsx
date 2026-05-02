@@ -36,7 +36,7 @@ export default function InstructorsPage() {
   }
 
   const handleDelete = async (id) => {
-    if (!confirm('Ștergi acest instructor?')) return
+    if (!confirm('Delete this instructor?')) return
     try {
       await instructorApi.delete(id)
       load()
@@ -47,7 +47,7 @@ export default function InstructorsPage() {
 
   return (
     <div className="page">
-      <h1>Instructori</h1>
+      <h1>Instructors</h1>
 
       {error && <div className="error">{error}</div>}
 
@@ -55,11 +55,11 @@ export default function InstructorsPage() {
         <form onSubmit={handleSubmit}>
           <div className="form-grid">
             <div className="form-group">
-              <label>Prenume</label>
+              <label>First Name</label>
               <input value={form.firstName} onChange={e => setForm({ ...form, firstName: e.target.value })} required />
             </div>
             <div className="form-group">
-              <label>Nume</label>
+              <label>Last Name</label>
               <input value={form.lastName} onChange={e => setForm({ ...form, lastName: e.target.value })} required />
             </div>
             <div className="form-group">
@@ -67,33 +67,33 @@ export default function InstructorsPage() {
               <input type="email" value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} required />
             </div>
             <div className="form-group">
-              <label>Telefon</label>
+              <label>Phone</label>
               <input value={form.phone} onChange={e => setForm({ ...form, phone: e.target.value })} />
             </div>
             <div className="form-group full-width">
-              <label>Specializare</label>
+              <label>Specialization</label>
               <input value={form.specialization} onChange={e => setForm({ ...form, specialization: e.target.value })} />
             </div>
           </div>
           <div className="btn-group">
-            <button type="submit" className="btn btn-primary">{editId ? 'Salvează' : 'Adaugă'}</button>
-            {editId && <button type="button" className="btn btn-warning" onClick={() => { setEditId(null); setForm(empty) }}>Anulează</button>}
+            <button type="submit" className="btn btn-primary">{editId ? 'Save' : 'Add'}</button>
+            {editId && <button type="button" className="btn btn-warning" onClick={() => { setEditId(null); setForm(empty) }}>Cancel</button>}
           </div>
         </form>
       </div>
 
       <div className="card">
         {items.length === 0 ? (
-          <div className="empty">Niciun instructor adăugat</div>
+          <div className="empty">No instructors added yet</div>
         ) : (
           <table>
             <thead>
               <tr>
-                <th>Nume</th>
+                <th>Name</th>
                 <th>Email</th>
-                <th>Telefon</th>
-                <th>Specializare</th>
-                <th>Acțiuni</th>
+                <th>Phone</th>
+                <th>Specialization</th>
+                <th>Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -105,8 +105,8 @@ export default function InstructorsPage() {
                   <td>{item.specialization}</td>
                   <td>
                     <div className="btn-group">
-                      <button className="btn btn-primary btn-sm" onClick={() => handleEdit(item)}>Editează</button>
-                      <button className="btn btn-danger btn-sm" onClick={() => handleDelete(item.id)}>Șterge</button>
+                      <button className="btn btn-primary btn-sm" onClick={() => handleEdit(item)}>Edit</button>
+                      <button className="btn btn-danger btn-sm" onClick={() => handleDelete(item.id)}>Delete</button>
                     </div>
                   </td>
                 </tr>

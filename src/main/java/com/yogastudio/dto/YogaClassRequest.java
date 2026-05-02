@@ -8,23 +8,23 @@ import java.time.DayOfWeek;
 import java.time.LocalTime;
 
 public record YogaClassRequest(
-        @NotBlank(message = "Numele clasei este obligatoriu")
+        @NotBlank(message = "Class name is required")
         String name,
 
         String description,
 
-        @NotNull(message = "Ziua este obligatorie")
+        @NotNull(message = "Day of week is required")
         DayOfWeek dayOfWeek,
 
-        @NotNull(message = "Ora de start este obligatorie")
+        @NotNull(message = "Start time is required")
         LocalTime startTime,
 
-        @Min(value = 15, message = "Durata minimă este 15 minute")
+        @Min(value = 15, message = "Minimum duration is 15 minutes")
         int durationMinutes,
 
-        @Min(value = 1, message = "Capacitatea minimă este 1")
+        @Min(value = 1, message = "Minimum capacity is 1")
         int maxCapacity,
 
-        @NotNull(message = "Instructorul este obligatoriu")
+        @NotNull(message = "Instructor is required")
         Long instructorId
 ) {}

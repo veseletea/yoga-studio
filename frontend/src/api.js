@@ -6,7 +6,7 @@ async function request(url, options = {}) {
     ...options,
   });
   if (!res.ok) {
-    const error = await res.json().catch(() => ({ detail: 'Eroare necunoscută' }));
+    const error = await res.json().catch(() => ({ detail: 'Unknown error' }));
     throw new Error(error.detail || `HTTP ${res.status}`);
   }
   if (res.status === 204) return null;

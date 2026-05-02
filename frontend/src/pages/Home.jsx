@@ -19,24 +19,24 @@ export default function Home() {
     <div className="page">
       <div className="home-hero">
         <h1>Yoga Studio</h1>
-        <p>Sistem de management pentru studioul tău de yoga</p>
+        <p>Management system for your yoga studio</p>
       </div>
       <div className="home-stats">
         <div className="stat-card">
           <div className="number">{stats.instructors}</div>
-          <div className="label">Instructori</div>
+          <div className="label">Instructors</div>
         </div>
         <div className="stat-card">
           <div className="number">{stats.students}</div>
-          <div className="label">Studenți</div>
+          <div className="label">Students</div>
         </div>
         <div className="stat-card">
           <div className="number">{stats.classes}</div>
-          <div className="label">Clase</div>
+          <div className="label">Classes</div>
         </div>
         <div className="stat-card">
           <div className="number">{stats.bookings}</div>
-          <div className="label">Rezervări</div>
+          <div className="label">Bookings</div>
         </div>
       </div>
     </div>

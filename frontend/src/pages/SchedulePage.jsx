@@ -3,8 +3,8 @@ import { yogaClassApi, studentApi, bookingApi } from '../api';
 
 const DAYS = ['MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY', 'SUNDAY'];
 const DAY_LABELS = {
-  MONDAY: 'Luni', TUESDAY: 'Marți', WEDNESDAY: 'Miercuri',
-  THURSDAY: 'Joi', FRIDAY: 'Vineri', SATURDAY: 'Sâmbătă', SUNDAY: 'Duminică'
+  MONDAY: 'Monday', TUESDAY: 'Tuesday', WEDNESDAY: 'Wednesday',
+  THURSDAY: 'Thursday', FRIDAY: 'Friday', SATURDAY: 'Saturday', SUNDAY: 'Sunday'
 };
 
 export default function SchedulePage() {
@@ -49,8 +49,8 @@ export default function SchedulePage() {
       });
 
       const statusText = booking.status === 'CONFIRMED'
-        ? 'Rezervare confirmată!'
-        : 'Clasa este plină. Ai fost adăugat pe lista de așteptare.';
+        ? 'Booking confirmed!'
+        : 'Class is full. You have been added to the waitlist.';
 
       setMessage({ type: 'success', text: statusText });
       setForm({ firstName: '', lastName: '', email: '' });
@@ -67,8 +67,8 @@ export default function SchedulePage() {
   return (
     <div className="page">
       <div className="schedule-header">
-        <h1>Program Clase</h1>
-        <p>Alege o clasă și rezervă-ți locul</p>
+        <h1>Class Schedule</h1>
+        <p>Choose a class and book your spot</p>
       </div>
 
       <div className="schedule-grid">
@@ -91,7 +91,7 @@ export default function SchedulePage() {
                 <div className="class-card-meta">
                   <span className="class-card-duration">{c.durationMinutes} min</span>
                   <span className={`class-card-spots ${spotsLeft(c) <= 2 ? 'spots-low' : ''}`}>
-                    {spotsLeft(c) > 0 ? `${spotsLeft(c)} locuri` : 'Lista de așteptare'}
+                    {spotsLeft(c) > 0 ? `${spotsLeft(c)} spots` : 'Waitlist'}
                   </span>
                 </div>
               </div>
@@ -119,13 +119,13 @@ export default function SchedulePage() {
               </div>
               {selected.description && (
                 <div className="detail-row">
-                  <span className="detail-label">Descriere</span>
+                  <span className="detail-label">Description</span>
                   <span>{selected.description}</span>
                 </div>
               )}
               <div className="detail-row">
-                <span className="detail-label">Capacitate</span>
-                <span>{selected.currentBookings} / {selected.maxCapacity} locuri ocupate</span>
+                <span className="detail-label">Capacity</span>
+                <span>{selected.currentBookings} / {selected.maxCapacity} spots taken</span>
               </div>
             </div>
 
@@ -136,10 +136,10 @@ export default function SchedulePage() {
             )}
 
             <form onSubmit={handleBook} className="booking-form">
-              <h3>Rezervă un loc</h3>
+              <h3>Book a Spot</h3>
               <div className="form-grid">
                 <div className="form-group">
-                  <label>Prenume</label>
+                  <label>First Name</label>
                   <input
                     required
                     value={form.firstName}
@@ -147,7 +147,7 @@ export default function SchedulePage() {
                   />
                 </div>
                 <div className="form-group">
-                  <label>Nume</label>
+                  <label>Last Name</label>
                   <input
                     required
                     value={form.lastName}
@@ -165,7 +165,7 @@ export default function SchedulePage() {
                 </div>
               </div>
               <button type="submit" className="btn btn-primary btn-book" disabled={loading}>
-                {loading ? 'Se procesează...' : 'Rezervă acum'}
+                {loading ? 'Processing...' : 'Book Now'}
               </button>
             </form>
           </div>
