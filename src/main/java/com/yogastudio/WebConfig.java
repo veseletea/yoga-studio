@@ -14,7 +14,7 @@ public class WebConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/api/**")
-                        .allowedOrigins("http://localhost:3000")
+                        .allowedOrigins("http://localhost:3000", "https://yoga-studio-production-86fa.up.railway.app")
                         .allowedMethods("GET", "POST", "PUT", "PATCH", "DELETE");
             }
         };
