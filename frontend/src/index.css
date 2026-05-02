@@ -194,10 +194,10 @@ tr:hover td {
 .home-hero::before {
   content: '';
   position: fixed;
-  top: 50%;
+  top: calc(50% + 30px);
   left: 50%;
-  width: 100vmin;
-  height: 100vmin;
+  width: min(100vw, calc(100vh - 60px));
+  height: min(100vw, calc(100vh - 60px));
   z-index: -1;
   transform: translate(-50%, -50%);
   opacity: 0.18;
