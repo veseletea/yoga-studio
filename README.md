@@ -2,7 +2,8 @@
 
 Full-stack application for managing a yoga studio: instructors, students, classes, and bookings.
 
-**Live Demo:** [yogastudio.up.railway.app](https://yogastudio.up.railway.app) · **API Docs:** [Swagger UI](https://yogastudio.up.railway.app/swagger-ui/index.html)
+**Live Demo:** [yogastudio.up.railway.app](https://yogastudio.up.railway.app) · 
+**API Docs:** [Swagger UI](https://yogastudio.up.railway.app/swagger-ui/index.html)
 
 ## Tech Stack
 
