@@ -22,6 +22,7 @@ Full-stack application for managing a yoga studio: instructors, students, classe
 - Input validation with localized error messages
 - Centralized error handling using RFC 7807 Problem Detail
 - Pre-populated seed data (4 instructors, 6 students, 9 classes, 13 bookings)
+- Interactive API documentation with Swagger/OpenAPI (springdoc)
 
 ## Project Structure
 
