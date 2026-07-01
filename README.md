@@ -11,7 +11,7 @@ Full-stack application for managing a yoga studio: instructors, students, classe
 |-------|------------|
 | **Backend** | Java 21, Spring Boot 3.4, Spring Data JPA |
 | **Frontend** | React 19, Vite, Plain CSS |
-| **Database** | H2 (in-memory, pre-populated) |
+| **Database** | PostgreSQL (Docker Compose local, Railway in production) |
 | **Infrastructure** | Docker & Docker Compose, Railway |
 
 ## Features
@@ -21,7 +21,7 @@ Full-stack application for managing a yoga studio: instructors, students, classe
 - Automatic waitlist when a class is full
 - Input validation with localized error messages
 - Centralized error handling using RFC 7807 Problem Detail
-- Pre-populated seed data (4 instructors, 6 students, 9 classes, 13 bookings)
+- Persistent data storage with PostgreSQL (survives restarts)
 - Interactive API documentation with Swagger/OpenAPI (springdoc)
 
 ## Project Structure
@@ -56,6 +56,14 @@ yoga-studio/
 
 ### Run the backend
 
+First, start the PostgreSQL database with Docker Compose:
+
+```bash
+docker compose up -d db
+```
+
+Then run the application:
+
 ```bash
 mvn spring-boot:run
 ```
@@ -72,7 +80,7 @@ npm run dev
 
 Frontend runs at `http://localhost:3000`
 
-### Run with Docker
+### Run with Docker available at http://localhost:8080
 
 ```bash
 docker compose up --build
@@ -161,21 +169,25 @@ curl -X POST http://localhost:8080/api/bookings \
   }'
 ```
 
-## H2 Console (local development)
+## Database
 
-Available at `http://localhost:8080/h2-console`
+The application uses **PostgreSQL** in all environments.
 
-| Setting | Value |
-|---------|-------|
-| JDBC URL | `jdbc:h2:mem:yogastudio` |
-| Username | `sa` |
-| Password | *(empty)* |
+**Local development** runs Postgres via Docker Compose (see `docker-compose.yml`). Connection settings default to a local instance and can be overridden with environment variables:
+
+| Variable | Default (local) |
+|----------|-----------------|
+| `SPRING_DATASOURCE_URL` | `jdbc:postgresql://localhost:5432/yogastudio` |
+| `SPRING_DATASOURCE_USERNAME` | `yoga` |
+| `SPRING_DATASOURCE_PASSWORD` | `yoga_local_pass` |
+
+**Production** runs on Railway with a managed PostgreSQL instance, wired through the same environment variables.
 
 ## Roadmap
 
 - [ ] User authentication & authorization (Spring Security + JWT)
-- [ ] Migrate from H2 to PostgreSQL in production
-- [ ] OpenAPI / Swagger documentation
+- [x] Migrate from H2 to PostgreSQL (local + production)
+- [x] OpenAPI / Swagger documentation
 - [ ] Unit and integration tests (JUnit 5 + Testcontainers)
 - [ ] CI/CD pipeline with GitHub Actions
 - [ ] Email notifications for bookings
