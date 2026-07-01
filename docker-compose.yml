@@ -18,3 +18,22 @@ services:
     depends_on:
       backend:
         condition: service_healthy
+
+  db:
+    image: postgres:16-alpine
+    container_name: yoga-db
+    environment:
+      POSTGRES_DB: yogastudio
+      POSTGRES_USER: yoga
+      POSTGRES_PASSWORD: yoga_local_pass
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U yoga -d yogastudio" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+volumes:
+  pgdata:
