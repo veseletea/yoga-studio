@@ -28,7 +28,7 @@ public class YogaAssistantController {
                         """)
                 .defaultAdvisors(QuestionAnswerAdvisor.builder(vectorStore)
                         .searchRequest(SearchRequest.builder()
-                                .similarityThreshold(0.3)
+                                .similarityThreshold(0.7)
                                 .topK(6)
                                 .build())
                         .build())
