@@ -47,3 +47,13 @@ export const bookingApi = {
   create: (data) => request(`${API}/bookings`, { method: 'POST', body: JSON.stringify(data) }),
   cancel: (id) => request(`${API}/bookings/${id}/cancel`, { method: 'PATCH' }),
 };
+
+export const assistantApi = {
+  ask: async (question) => {
+    const res = await fetch(`${API}/assistant?question=${encodeURIComponent(question)}`);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    return res.text();
+  },
+};
+
+

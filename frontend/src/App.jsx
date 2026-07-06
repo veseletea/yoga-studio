@@ -1,4 +1,5 @@
 import { Routes, Route } from 'react-router-dom'
+import ChatWidget from './components/ChatWidget'
 import Navbar from './components/Navbar'
 import Home from './pages/Home'
 import InstructorsPage from './pages/InstructorsPage'
@@ -19,6 +20,7 @@ export default function App() {
         <Route path="/classes" element={<ClassesPage />} />
         <Route path="/bookings" element={<BookingsPage />} />
       </Routes>
+      <ChatWidget />
     </>
   )
 }
