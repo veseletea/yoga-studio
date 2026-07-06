@@ -12,7 +12,7 @@ class starts.
 If you cannot attend a class you have booked, please cancel so that someone on
 the waitlist can take your place.
 
-- You can cancel free of charge up to [ADAPT: cancellation window, e.g. 4 hours]
+- You can cancel free of charge up to 4 hours before the class
   before the class begins.
 - Cancellations made after that window are considered late and the class pass is
   not refunded.
@@ -37,15 +37,10 @@ the system can offer it to the next person.
 
 ## Late arrival
 
-Please arrive at least [ADAPT: e.g. 10] minutes before class. For everyone's
+Please arrive at least 10 minutes before class. For everyone's
 safety and focus, entry may not be possible after a class has started,
 especially once the warm-up or breathing sequence has begun. If you know you
 will be late, contact the studio in advance when possible.
-
-## Refunds and pass expiry
-
-[ADAPT: describe how class packages work — how many classes, validity period,
-whether unused classes expire, and your refund policy for packages.]
 
 ## Changes to the schedule
 

@@ -57,7 +57,10 @@ public class DataIngestionService implements ApplicationRunner {
 
     private void ingest() throws IOException {
         Resource[] documents = resourcePatternResolver.getResources(DOCUMENTS_LOCATION);
-        TokenTextSplitter splitter = new TokenTextSplitter();
+
+        // chunkSize=300 tokens, minChunkSizeChars=100, minChunkLengthToEmbed=5,
+        // maxNumChunks=10000, keepSeparator=true
+        TokenTextSplitter splitter = new TokenTextSplitter(300, 100, 5, 10000, true);
         int totalChunks = 0;
 
         for (Resource document : documents) {
