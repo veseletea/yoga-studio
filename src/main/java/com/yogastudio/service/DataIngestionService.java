@@ -22,6 +22,8 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HexFormat;
 import java.util.List;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+
 
 /**
  * Loads the yoga studio knowledge base (markdown files) into the pgvector store.
@@ -33,6 +35,7 @@ import java.util.List;
  * without any manual database cleanup.
  */
 @Component
+@ConditionalOnProperty(name = "app.rag.ingestion.enabled", havingValue = "true", matchIfMissing = true)
 public class DataIngestionService implements ApplicationRunner {
 
     private static final Logger log = LoggerFactory.getLogger(DataIngestionService.class);
