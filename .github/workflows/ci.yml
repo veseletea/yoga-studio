@@ -9,15 +9,11 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    jobs:
-      build:
-        runs-on: ubuntu-latest
-        permissions:
-          contents: read
-          checks: write
-          pull-requests: write
-        steps:
-          - uses: actions/checkout@v4
+    permissions:
+      contents: read
+      checks: write
+      pull-requests: write
+
     steps:
       - uses: actions/checkout@v4
 
