@@ -1,3 +1,5 @@
+![CI](https://github.com/veseletea/yoga-studio/actions/workflows/ci.yml/badge.svg)
+
 # Yoga Studio Management
 
 Full-stack application for managing a yoga studio: instructors, students, classes, and bookings.
