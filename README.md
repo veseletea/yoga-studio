@@ -1,4 +1,5 @@
 ![CI](https://github.com/veseletea/yoga-studio/actions/workflows/ci.yml/badge.svg)
+![Release](https://img.shields.io/github/v/release/veseletea/yoga-studio)
 
 # Yoga Studio Management
 
