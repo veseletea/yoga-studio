@@ -1,5 +1,6 @@
 package com.yogastudio.controller;
 
+import com.yogastudio.service.BookingTools;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.client.advisor.vectorstore.QuestionAnswerAdvisor;
 import org.springframework.ai.vectorstore.SearchRequest;
@@ -17,21 +18,25 @@ public class YogaAssistantController {
 
     private final ChatClient chatClient;
 
-    public YogaAssistantController(ChatClient.Builder chatClientBuilder, VectorStore vectorStore) {
+    public YogaAssistantController(ChatClient.Builder chatClientBuilder,
+                                   VectorStore vectorStore,
+                                   BookingTools bookingTools) {
         this.chatClient = chatClientBuilder
                 .defaultSystem("""
-                        You are a friendly assistant for a yoga studio.
-                        Answer the user's question using only the provided context
-                        from the studio's knowledge base. If the answer is not in
-                        the context, say you don't have that information and suggest
-                        contacting the studio. Keep answers concise and warm.
-                        """)
+                    You are a friendly assistant for a yoga studio.
+                    Use the provided knowledge base context for questions about
+                    policies, class types, and general guidance. For questions
+                    about the actual schedule, use the available tools.
+                    If you don't have the information, say so and suggest
+                    contacting the studio. Keep answers concise and warm.
+                    """)
                 .defaultAdvisors(QuestionAnswerAdvisor.builder(vectorStore)
                         .searchRequest(SearchRequest.builder()
-                                .similarityThreshold(0.3)
+                                .similarityThreshold(0.7)
                                 .topK(6)
                                 .build())
                         .build())
+                .defaultTools(bookingTools)
                 .build();
     }
 
