@@ -26,20 +26,16 @@ public class SecurityConfig {
                 .sessionManagement(session ->
                         session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
-                        // frontend static
                         .requestMatchers("/", "/index.html", "/assets/**", "/*.svg", "/*.ico").permitAll()
-
-                        // documentatie API
                         .requestMatchers("/swagger-ui/**", "/swagger-ui.html", "/v3/api-docs/**").permitAll()
-
-                        // asistentul AI ramane public (demo)
                         .requestMatchers("/api/assistant/**").permitAll()
 
-                        // citirea claselor si instructorilor e publica
-                        .requestMatchers(HttpMethod.GET, "/api/classes/**", "/api/instructors/**").permitAll()
+                        // citirea e publica (demo)
+                        .requestMatchers(HttpMethod.GET, "/api/**").permitAll()
 
-                        // orice altceva cere autentificare
+                        // scrierea cere autentificare
                         .anyRequest().authenticated()
+
                 )
                 .httpBasic(basic -> {});
 
