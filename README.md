@@ -88,6 +88,7 @@ mvn spring-boot:run
 | `SPRING_DATASOURCE_URL` | no locally | Defaults to `jdbc:postgresql://localhost:5432/yogastudio`, matching the `db` service in `docker-compose.yml`. Set explicitly in production. |
 | `SPRING_DATASOURCE_USERNAME` | no locally | Same as above. |
 | `SPRING_DATASOURCE_PASSWORD` | no locally | Same as above. |
+
 Never commit these values. Locally they go in your shell environment; on Railway they are set as service variables.
 
 ```bash
