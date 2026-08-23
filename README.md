@@ -31,7 +31,9 @@ Full-stack application for managing a yoga studio: instructors, students, classe
 - Centralized error handling using RFC 7807 Problem Detail
 - Persistent data storage with PostgreSQL (survives restarts)
 - Interactive API documentation with Swagger/OpenAPI (springdoc)
-
+- AI assistant: RAG over a pgvector knowledge base, plus `@Tool` function calling for live schedule and booking queries
+- Stateless authentication with BCrypt; the assistant resolves user identity from the security context, never from model input
+  
 ## Project Structure
 
 ```
