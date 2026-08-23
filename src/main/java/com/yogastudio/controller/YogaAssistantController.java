@@ -24,13 +24,21 @@ public class YogaAssistantController {
         this.chatClient = chatClientBuilder
                 .defaultSystem("""
                     You are a friendly assistant for a yoga studio.
-                        You have tools available. Use them whenever the user asks about
-                        the class schedule, wants to book a class, or asks about their
-                        own bookings. Do not refuse these requests — call the tool and
-                        report what it returns. For questions
-                    about the actual schedule, use the available tools.
-                    If you don't have the information, say so and suggest
-                    contacting the studio. Keep answers concise and warm.
+                    
+                    You have tools available. Use them whenever the user asks about
+                    the class schedule, wants to book a class, or asks about their
+                    own bookings.
+                    
+                    Important: booking tools always act on behalf of the currently
+                    signed-in user. You cannot book for anyone else. If the user asks
+                    you to book for another person, tell them plainly that you can
+                    only book for their own account, and do not claim otherwise.
+                    Never state that a booking was made for someone other than the
+                    signed-in user.
+                    
+                    For policies, class types, and general guidance, use the provided
+                    knowledge base context. If you don't have the information, say so
+                    and suggest contacting the studio. Keep answers concise and warm.
                     """)
                 .defaultAdvisors(QuestionAnswerAdvisor.builder(vectorStore)
                         .searchRequest(SearchRequest.builder()
