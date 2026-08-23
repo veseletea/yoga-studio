@@ -72,6 +72,26 @@ Then run the application:
 ```bash
 mvn spring-boot:run
 ```
+## Running locally
+
+## Environment variables
+
+| Variable | Required | Description |
+|---|---|---|
+| `OPENAI_API_KEY` | yes | OpenAI key used for chat completions (`gpt-4o-mini`) and embeddings (`text-embedding-3-small`). |
+| `ADMIN_PASSWORD` | yes | Password for the seeded admin account. Set it before the first startup — the seeder only creates the account if it doesn't already exist. |
+| `SPRING_DATASOURCE_URL` | no locally | Defaults to `jdbc:postgresql://localhost:5432/yogastudio`, matching the `db` service in `docker-compose.yml`. Set explicitly in production. |
+| `SPRING_DATASOURCE_USERNAME` | no locally | Same as above. |
+| `SPRING_DATASOURCE_PASSWORD` | no locally | Same as above. |
+Never commit these values. Locally they go in your shell environment; on Railway they are set as service variables.
+
+```bash
+docker compose up -d db
+ADMIN_PASSWORD=your_password mvn spring-boot:run
+```
+
+The admin account is seeded on first startup using `app.admin.email` and `ADMIN_PASSWORD`.
+Set `ADMIN_PASSWORD` before the first run — the seeder only creates the account if it doesn't already exist.
 
 Backend runs at `http://localhost:8080`
 
