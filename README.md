@@ -16,11 +16,11 @@ Full-stack application for managing a yoga studio: instructors, students, classe
 | **Frontend** | React 19, Vite, Plain CSS |
 | **Database** | PostgreSQL (Docker Compose local, Railway in production) |
 | **Infrastructure** | Docker & Docker Compose, Railway |
+|  **Security** | Spring Security (stateless auth, BCrypt) |
 | **AI** | Spring AI, pgvector, OpenAI (RAG) |
 | **Testing** | JUnit 5, Mockito, Testcontainers |
 | **CI** | GitHub Actions |
 |  **AI** | Spring AI, pgvector, OpenAI (RAG + tool calling) |
-|  **Security** | Spring Security (stateless auth, BCrypt) |
 
 ## Features
 
