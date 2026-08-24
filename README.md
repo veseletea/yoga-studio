@@ -216,11 +216,11 @@ The application uses **PostgreSQL** in all environments.
 
 ## Roadmap
 
-- [ ] User authentication & authorization (Spring Security + JWT)
+- [x] User authentication & authorization (Spring Security)
 - [x] Migrate from H2 to PostgreSQL (local + production)
 - [x] OpenAPI / Swagger documentation
-- [ ] Unit and integration tests (JUnit 5 + Testcontainers)
-- [ ] CI/CD pipeline with GitHub Actions
+- [X] Unit and integration tests (JUnit 5 + Testcontainers)
+- [x] CI/CD pipeline with GitHub Actions
 - [ ] Email notifications for bookings
 - [ ] Admin dashboard with analytics
 
