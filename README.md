@@ -8,6 +8,15 @@ Full-stack application for managing a yoga studio: instructors, students, classe
 **Live Demo:** [yogastudio.up.railway.app](https://yogastudio.up.railway.app) · 
 **API Docs:** [Swagger UI](https://yogastudio.up.railway.app/swagger-ui/index.html)
 
+## Demo account
+
+The live demo accepts a shared account so you can try the booking flow:
+
+- **Email:** `demo@yogastudio.local`
+- **Password:** `demo1234`
+
+Please be gentle — it's a shared demo database.
+
 ## Tech Stack
 
 | Layer | Technology |
