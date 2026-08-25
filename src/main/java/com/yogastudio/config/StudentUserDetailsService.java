@@ -29,10 +29,12 @@ public class StudentUserDetailsService implements UserDetailsService {
             throw new UsernameNotFoundException("User has no credentials: " + email);
         }
 
+        Student.Role role = student.getRole() != null ? student.getRole() : Student.Role.STUDENT;
+
         return new User(
                 student.getEmail(),
                 student.getPassword(),
-                List.of(new SimpleGrantedAuthority("ROLE_" + student.getRole().name()))
+                List.of(new SimpleGrantedAuthority("ROLE_" + role.name()))
         );
     }
 }
