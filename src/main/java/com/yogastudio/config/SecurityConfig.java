@@ -30,6 +30,7 @@ public class SecurityConfig {
                         .requestMatchers("/", "/index.html", "/assets/**", "/*.svg", "/*.ico").permitAll()
                         .requestMatchers("/swagger-ui/**", "/swagger-ui.html", "/v3/api-docs/**").permitAll()
                         .requestMatchers("/api/assistant/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/actuator/health", "/actuator/health/**", "/actuator/info").permitAll()
 
                         // citirea e publica (demo)
                         .requestMatchers(HttpMethod.GET, "/api/**").permitAll()
